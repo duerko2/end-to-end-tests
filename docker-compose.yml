@@ -11,5 +11,5 @@ services:
 networks:
   dtupay-network:
     # Use a custom driver
-    driver: dtupay-driver
+    driver: bridge
  
