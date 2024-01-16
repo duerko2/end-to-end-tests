@@ -2,30 +2,9 @@ version: '3'
 services:
   rabbitMq:
     image: rabbitmq:3-management
-    container_name: rabbitMq_container
+    container_name: rabbitMq_container2
     ports:
      - "5672:5672"
      - "15672:15672"
-    
-  account-service:
-    image: account-service
-    container_name: account-service
-    ports:
-     - "8080:8080"
-    
-  token-service:
-    image: token-service
-    container_name: token-service
-
-  payment-service:
-    image: payment-service
-    container_name: payment-service
-    ports:
-      - "9090:9090"
-
-  bank-service:
-    image: bank-service
-    container_name: bank-service
-
 
  
