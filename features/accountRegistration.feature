@@ -19,6 +19,13 @@ Feature: Account Registration feature
 		Then should get an error saying "that account already exists"
 		And the account is registered
 
+	Scenario: Double merchant registration
+		Given an unregistered "merchant"
+		When the account is being registered
+		And the account is being registered
+		Then should get an error saying "that account already exists"
+		And the account is registered
+
 	Scenario: Multiple account registration concurrent
 		Given a list of 6 unregistered "customer"s
 		When the accounts are being registered concurrently
