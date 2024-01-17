@@ -7,8 +7,8 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>dk.dtu.compute</groupId>
-	<artifactId>end-to-end-test</artifactId>
-	<name>EndToEndTest</name>
+	<artifactId>system-test</artifactId>
+	<name>SystemTest</name>
 	<version>1.0.0</version>
 
 	<properties>
