@@ -3,6 +3,7 @@ package behaviourtests;
 import dtu.ws.fastmoney.BankService;
 import dtu.ws.fastmoney.BankServiceException_Exception;
 import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -19,10 +20,10 @@ public class PaymentSteps {
 
     String customerName = "name";
     String customerLastName = "lastname";
-    String customerCPR = "9999999";
+    String customerCPR = "999999";
     String merchantName = "merchantName";
     String merchantLastName = "merchantlastname";
-    String merchantCPR = "1111111";
+    String merchantCPR = "111111";
     String customerBankId;
     String customerDTUPayId;
     String merchantBankId;
@@ -36,6 +37,12 @@ public class PaymentSteps {
     private Token token;
     TokenService tokenService = new TokenService();
 
+    @Before
+    public void before(){
+        dtuPayService.deleteFromCpr(customerCPR);
+        dtuPayService.deleteFromCpr(merchantCPR);
+
+    }
     @Given("a customer with a bank account with balance {int}")
     public void aCustomerWithABankAccountWithBalance(int balance) throws BankServiceException_Exception {
         // CreateBankAccount
@@ -219,4 +226,5 @@ public class PaymentSteps {
     public void thatTheCustomerIsNotRegisteredWithDTUPay() {
 
     }
+
 }

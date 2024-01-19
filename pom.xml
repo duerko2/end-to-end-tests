@@ -53,7 +53,9 @@
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
 			<version>6.9.1</version>
+			<scope>test</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>com.sun.xml.ws</groupId>
 			<artifactId>jaxws-ri</artifactId>
@@ -65,11 +67,15 @@
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit</artifactId>
 			<version>6.9.1</version>
+			<scope>test</scope>
+
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-picocontainer</artifactId>
 			<version>6.9.1</version>
+			<scope>test</scope>
+
 		</dependency>
 		<!-- This is JUnit 5 aka Jupiter -->
 		<dependency>

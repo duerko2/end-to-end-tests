@@ -10,6 +10,8 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AccountRegistrationService {
 	Client client = ClientBuilder.newClient();
@@ -38,6 +40,11 @@ public class AccountRegistrationService {
 		r.path("accounts").path(accountId).request().delete();
 	}
 
+	public List<Token> getTokens(String accountId){
+		var response = r.path("accounts").path(accountId).path("tokens").request().get();
+		response.getStatus();
+		return response.readEntity(ArrayList.class);
+	}
 	public Account getAccount(String accountId) throws NoSuchAccountException {
 
 		var response = r.path("accounts").path(accountId).request().get();

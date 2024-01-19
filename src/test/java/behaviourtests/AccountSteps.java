@@ -54,9 +54,9 @@ public class AccountSteps {
     }
 
     @Then("has {int} tokens")
-    public void hasTokens(Integer int1) {
+    public void hasTokens(Integer int1) throws NoSuchAccountException {
         // Write code here that turns the phrase above into concrete actions
-        assertEquals(int1, account.getTokens().size());
+        assertEquals(int1,accountRegistrationService.getTokens(account.getAccountId()).size());
     }
 
 
@@ -115,7 +115,7 @@ public class AccountSteps {
     @And("all have {int} tokens")
     public void allHaveTokens(int arg0) {
         for (Account a : registeredAccounts) {
-            assertEquals(arg0, a.getTokens().size());
+            assertEquals(arg0, accountRegistrationService.getTokens(a.getAccountId()).size());
         }
     }
     @After

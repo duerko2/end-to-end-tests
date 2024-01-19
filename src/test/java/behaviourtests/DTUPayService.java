@@ -16,10 +16,10 @@ public class DTUPayService {
     Client client = builder.build();
     WebTarget r = client.target("http://localhost:9090/");
 
-    public boolean pay(Payment p) {
+    public boolean  pay(Payment p) {
 
         Response response;
-        PaymentDTO payLoad=new PaymentDTO(p.getAmount(),p.getToken().getRfid(),p.getMerchantId());
+        var payLoad= p;
         System.out.println("payLoad = " + payLoad);
         System.out.println("payLoad.getAmount() = " + payLoad.getAmount());
         System.out.println("payLoad.getToken() = " + payLoad.getToken());
@@ -27,6 +27,7 @@ public class DTUPayService {
         try {
             response = r.path("payments").request().post(Entity.entity(payLoad, "application/json"));
         } catch (Exception e) {
+            System.out.printf(e.getMessage());
             return false;
         }
 
@@ -34,10 +35,20 @@ public class DTUPayService {
             return true;
         } else {
             System.out.println("response.getStatus() = " + response.getStatus());
+
             return false;
         }
     }
 
+    public void deleteFromCpr(String cpr){
+        BankService bank = new BankServiceService().getBankServicePort();
+        try {
+            var bankid = bank.getAccountByCprNumber(cpr);
+            bank.retireAccount(bankid.getId());
+        } catch (BankServiceException_Exception e) {
+        }
+
+    }
     public String registerBankAccount(String customerName, String customerLastName, String customerCPR, int balance) {
         BankService bank = new BankServiceService().getBankServicePort();
 
@@ -45,6 +56,7 @@ public class DTUPayService {
         user.setCprNumber(customerCPR);
         user.setFirstName(customerName);
         user.setLastName(customerLastName);
+
 
         try {
 
