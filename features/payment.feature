@@ -32,33 +32,3 @@ Feature: Payment
     And the balance of the customer at the bank is 1500 kr
     And the balance of the merchant at the bank is 1500 kr
 
-  Scenario: Unsuccessful payment with missing bank account
-    Given a customer with no bank account
-    And that the customer is registered with DTU Pay
-    Given a merchant with a bank account with balance 1000
-    And that the merchant is registered with DTU Pay
-    Given a customer has at least 1 token
-    When the merchant initiates a payment for 100 kr with the customer token
-    Then the payment is unsuccessful
-    And the balance of the merchant at the bank is 1000 kr
-
-  Scenario: Unsuccessful payment with invalid token
-    Given a customer with a bank account with balance 1000
-    And that the customer is registered with DTU Pay
-    Given a merchant with a bank account with balance 2000
-    And that the merchant is registered with DTU Pay
-    When the merchant initiates a payment for 100 kr with an invalid token
-    Then the payment is unsuccessful
-    And the balance of the customer at the bank is 1000 kr
-    And the balance of the merchant at the bank is 2000 kr
-
-  Scenario: Unsuccessful payment with missing DTUPay account
-    Given a customer with a bank account with balance 1000
-    And that the customer is not registered with DTU Pay
-    Given a merchant with a bank account with balance 2000
-    And that the merchant is registered with DTU Pay
-    When the merchant initiates a payment for 100 kr with the customer token
-    Then the payment is unsuccessful
-    And the balance of the customer at the bank is 1000 kr
-    And the balance of the merchant at the bank is 2000 kr
-

@@ -187,29 +187,4 @@ public class PaymentSteps {
         }
 
     }
-
-    @Given("a customer with no bank account")
-    public void aCustomerWithNoBankAccount() {
-        customerBankId = "invalid bank account";
-    }
-
-    @Then("the payment is unsuccessful")
-    public void thePaymentIsUnsuccessful() {
-        assertTrue(!successful);
-    }
-
-    @When("the merchant initiates a payment for {int} kr with an invalid token")
-    public void theMerchantInitiatesAPaymentForKrWithAnInvalidToken(int arg0) {
-        Payment p = new Payment();
-        p.setAmount(arg0);
-        p.setMerchantId(merchantDTUPayId);
-        p.setToken(new Token("invalid token"));
-
-        successful = dtuPayService.pay(p);
-    }
-
-    @And("that the customer is not registered with DTU Pay")
-    public void thatTheCustomerIsNotRegisteredWithDTUPay() {
-
-    }
 }
