@@ -12,7 +12,10 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @Author: Marcus Jacobsen
+ * Mob programming, all members
+ */
 public class AccountRegistrationService {
 	Client client = ClientBuilder.newClient();
 	WebTarget r = client.target("http://localhost:8080/");

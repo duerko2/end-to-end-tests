@@ -9,7 +9,10 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 import java.math.BigDecimal;
 import java.util.concurrent.TimeUnit;
-
+/**
+ * @Author: Marcus Jacobsen
+ * Mob programming, all members
+ */
 public class DTUPayService {
 
     ClientBuilder builder = ClientBuilder.newBuilder().connectTimeout(2000, TimeUnit.MILLISECONDS).readTimeout(5000, TimeUnit.MILLISECONDS);
