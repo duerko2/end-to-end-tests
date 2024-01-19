@@ -41,7 +41,7 @@ public class AccountSteps {
     public void theAccountIsBeingRegistered() {
         // Write code here that turns the phrase above into concrete actions
         try {
-            account = accountRegistrationService.register(account);
+            account.setAccountId(accountRegistrationService.register(account));
         } catch (Exception e) {
             error = e.getMessage();
         }
@@ -86,7 +86,8 @@ public class AccountSteps {
         for (Account a : accounts) {
             threads.add(new Thread(() -> {
                 try {
-                    registeredAccounts.add(accountRegistrationService.register(a));
+                    a.setAccountId(accountRegistrationService.register(a));
+                    registeredAccounts.add(a);
                 } catch (AccountAlreadyExists e) {
                     throw new RuntimeException(e);
                 }

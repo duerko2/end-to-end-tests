@@ -20,6 +20,10 @@ public class DTUPayService {
 
         Response response;
         PaymentDTO payLoad=new PaymentDTO(p.getAmount(),p.getToken().getRfid(),p.getMerchantId());
+        System.out.println("payLoad = " + payLoad);
+        System.out.println("payLoad.getAmount() = " + payLoad.getAmount());
+        System.out.println("payLoad.getToken() = " + payLoad.getToken());
+        System.out.println("payLoad.getMerchantId() = " + payLoad.getMerchantId());
         try {
             response = r.path("payments").request().post(Entity.entity(payLoad, "application/json"));
         } catch (Exception e) {

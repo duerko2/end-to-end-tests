@@ -34,6 +34,7 @@ public class PaymentSteps {
     DTUPayService dtuPayService = new DTUPayService();
     List<Token> tokens;
     private Token token;
+    TokenService tokenService = new TokenService();
 
     @Given("a customer with a bank account with balance {int}")
     public void aCustomerWithABankAccountWithBalance(int balance) throws BankServiceException_Exception {
@@ -51,7 +52,7 @@ public class PaymentSteps {
         account.setBankId(customerBankId);
         account.setType(new AccountType("customer"));
 
-        customerDTUPayId = accountRegistrationService.register(account).getAccountId();
+        customerDTUPayId = accountRegistrationService.register(account);
 
         assertEquals(customerDTUPayId,accountRegistrationService.getAccount(customerDTUPayId).getAccountId());
     }
@@ -72,7 +73,7 @@ public class PaymentSteps {
         account.setBankId(merchantBankId);
         account.setType(new AccountType("merchant"));
 
-        merchantDTUPayId = accountRegistrationService.register(account).getAccountId();
+        merchantDTUPayId = accountRegistrationService.register(account);
 
         assertEquals(merchantDTUPayId,accountRegistrationService.getAccount(merchantDTUPayId).getAccountId());
     }
@@ -115,7 +116,13 @@ public class PaymentSteps {
 
     @Given("a customer has at least {int} token")
     public void aCustomerHasAtLeastToken(int arg0) throws NoSuchAccountException{
-        tokens = accountRegistrationService.getAccount(customerDTUPayId).getTokens();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        tokens = tokenService.getTokens(customerDTUPayId);
+        System.out.println("tokens.size() = " + tokens.size());
         assertTrue(tokens.size() >= arg0);
         token = tokens.get(0);
     }
