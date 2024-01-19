@@ -14,7 +14,10 @@ import java.util.concurrent.TimeoutException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
+/**
+ * @Author: Rasmus Bo Thomsen
+ * Mob programming, all members
+ */
 public class PaymentSteps {
 
     String customerName = "name";
@@ -139,7 +142,6 @@ public class PaymentSteps {
     @When("the merchant initiates {int} payments sequentially for {int} kr with a customer token")
     public void theMerchantInitiatesPaymentsSequentiallyForKrWithACustomerToken(int arg0, int arg1) {
         for (int i = 0; i < arg0; i++) {
-            System.out.println("i = " + i);
             token = tokens.get(i);
             Payment p = new Payment();
             p.setAmount(arg1);
@@ -176,7 +178,6 @@ public class PaymentSteps {
                 if(!b){
                     successful = false;
                 } else {
-                    System.out.println("Payment in conccurent successful "+ finalI);
                 }
 
             });

@@ -1,7 +1,10 @@
 package behaviourtests;
 
 import behaviourtests.Token;
-
+/**
+ * @Author: Rasmus Bo Thomsen
+ * Mob programming, all members
+ */
 public class Payment {
 
     String merchantId;

@@ -1,5 +1,8 @@
 package behaviourtests;
-
+/**
+ * @Author: Andreas Aagaard
+ * Mob programming, all members
+ */
 public class AccountType {
     public String type;
     public AccountType() {
