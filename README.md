@@ -6,7 +6,7 @@ To run the service locally, ensure that you have the proper dependencies install
 * Maven
 * Docker Compose
 * The microservices in the DTUPay system
-* * [account-service](https://github.com/duerko2/account-service)
+  * [account-service](https://github.com/duerko2/account-service)
   * [bank-service](https://github.com/duerko2/bank-service)
   * [payment-ervice](https://github.com/duerko2/payment-service)
   * [reporting-service](https://github.com/duerko2/reporting-service)
