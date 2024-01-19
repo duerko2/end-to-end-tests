@@ -57,7 +57,11 @@ public class ReportingSteps {
 
     @And("a manager report generation request is received")
     public void aManagerReportGenerationRequestIsReceived() {
-
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         managerReport = Reportingservice.getManagerReport();
         
     }

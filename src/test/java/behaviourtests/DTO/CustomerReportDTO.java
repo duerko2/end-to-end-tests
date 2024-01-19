@@ -1,6 +1,8 @@
 package behaviourtests.DTO;
 
+
 import behaviourtests.Token;
+
 import java.util.Objects;
 
 public class CustomerReportDTO {
