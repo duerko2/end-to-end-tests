@@ -63,6 +63,11 @@ public class PaymentSteps {
         account.setType(new AccountType("customer"));
 
         customerDTUPayId = accountRegistrationService.register(account);
+        try {
+            Thread.sleep(250);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
         assertEquals(customerDTUPayId,accountRegistrationService.getAccount(customerDTUPayId).getAccountId());
     }

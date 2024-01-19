@@ -54,6 +54,12 @@ public class AccountSteps {
     public void theAccountIsRegistered() {
         // Write code here that turns the phrase above into concrete actions
         assertNotNull(account.getAccountId());
+        // The reason for waiting is that the tokens are not created instantly
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Then("has {int} tokens")
