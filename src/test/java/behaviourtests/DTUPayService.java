@@ -19,8 +19,9 @@ public class DTUPayService {
     public boolean pay(Payment p) {
 
         Response response;
+        PaymentDTO payLoad=new PaymentDTO(p.getAmount(),p.getToken().getRfid(),p.getMerchantId());
         try {
-            response = r.path("payments").request().post(Entity.entity(p, "application/json"));
+            response = r.path("payments").request().post(Entity.entity(payLoad, "application/json"));
         } catch (Exception e) {
             return false;
         }
